@@ -35,7 +35,7 @@ const CourseDetail: NextPage<Props> = ({ course, related_courses }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch("http://localhost:5001/courses");
+  const res = await fetch("https://serverside-backend-project04.herokuapp.com//courses");
   const courses: CourseInterface[] = await res.json();
 
   const paths = courses.map(c => ({
@@ -55,10 +55,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   // params contain the "id"
   if (params) {
-    const res = await fetch(`http://localhost:5001/courses/${params.id}`);
+    const res = await fetch(`https://serverside-backend-project04.herokuapp.com//courses/${params.id}`);
     const course = await res.json();
 
-    const resCourses = await fetch(`http://localhost:5001/courses`);
+    const resCourses = await fetch(`https://serverside-backend-project04.herokuapp.com//courses`);
     const courses: CourseInterface[] = await resCourses.json();
 
     // courses?_start=random&_limit=3
@@ -66,7 +66,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     // math.random goes to + 1 number so we get one number plus
 
     const randomNo = Math.floor(Math.random() * (courses.length - 3));
-    const resRelated = await fetch(`http://localhost:5001/courses?_start=${randomNo}&_limit=3`);
+    const resRelated = await fetch(`https://serverside-backend-project04.herokuapp.com//courses?_start=${randomNo}&_limit=3`);
     const related_courses = await resRelated.json();
 
     return {

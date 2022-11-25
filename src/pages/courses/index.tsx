@@ -34,10 +34,10 @@ const CoursesOverview: NextPage<Props> = ({ courses_page, courses }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch("http://localhost:5001/courses_page");
+  const res = await fetch("https://serverside-backend-project04.herokuapp.com//courses_page");
   const courses_page = await res.json();
 
-  const resCourses = await fetch("http://localhost:5001/courses");
+  const resCourses = await fetch("https://serverside-backend-project04.herokuapp.com//courses");
   const courses = await resCourses.json();
 
   return {

@@ -49,17 +49,17 @@ const Home: NextPage<Props> = ({ homepage, about_block, featured_courses, testim
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch("http://localhost:5001/homepage");
+  const res = await fetch("https://serverside-backend-project04.herokuapp.com//homepage");
   const homepage = await res.json();
 
-  const resAbout = await fetch("http://localhost:5001/about_page");
+  const resAbout = await fetch("https://serverside-backend-project04.herokuapp.com//about_page");
   const about_block = await resAbout.json();
 
   // get the first 3 courses
-  const resCourses = await fetch("http://localhost:5001/courses?_start=1&_limit=3");
+  const resCourses = await fetch("https://serverside-backend-project04.herokuapp.com//courses?_start=1&_limit=3");
   const featured_courses = await resCourses.json();
 
-  const resTestimonials = await fetch("http://localhost:5001/testimonials");
+  const resTestimonials = await fetch("https://serverside-backend-project04.herokuapp.com//testimonials");
   const testimonials = await resTestimonials.json();
 
   return {

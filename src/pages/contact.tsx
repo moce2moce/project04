@@ -22,7 +22,7 @@ const Contact: NextPage<Props> = ({ contact_page }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch("http://localhost:5001/contact_page");
+  const res = await fetch("https://serverside-backend-project04.herokuapp.com//contact_page");
   const contact_page = await res.json();
 
   return {
